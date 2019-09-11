@@ -26,3 +26,7 @@ p{
     text-align: center;
     margin-bottom: 3%;
 }
+.formbod{
+    height:600px;
+    overflow: scroll;
+}
