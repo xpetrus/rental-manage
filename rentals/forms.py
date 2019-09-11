@@ -19,3 +19,15 @@ class RentalForm(forms.ModelForm):
             'Receive_Hour': forms.TimeInput(attrs={'placeholder': 'Hour:Minutes'}),
             'Return_Hour': forms.TimeInput(attrs={'placeholder': 'Hour:Minutes'}),
         }
+
+
+class VendorForm(forms.ModelForm):
+    class Meta:
+        model = Vendor
+        fields = ('Vendor_ID', 'Sales_Person', 'Address', 'Contact')
+
+
+class InvoiceForm(forms.ModelForm):
+    class Meta:
+        model = Invoice
+        fields = ('Job_No', 'Invoice_Date', 'Invoice_No', 'Invoice_Amount')

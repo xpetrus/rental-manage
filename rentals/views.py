@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Rental, Vendor, Invoice
-from .forms import RentalForm
+from .forms import RentalForm, VendorForm, InvoiceForm
 
 
 # Create your views here.
@@ -25,12 +25,22 @@ def vendor_detail_view(request):
     return render(request, 'rentals/vendortab.html', context)
 
 
+def vendor_details(request, pk):
+    vendor = get_object_or_404(Vendor, pk=pk)
+    return render(request, 'rentals/vendor_details.html', {'vendor': vendor})
+
+
 def invoice_detail_view(request):
     obj = Invoice.objects.all()
     context = {
         'invoices': obj
     }
     return render(request, 'rentals/invoicetab.html', context)
+
+
+def invoice_details(request, pk):
+    invoice = get_object_or_404(Invoice, pk=pk)
+    return render(request, 'rentals/invoice_details.html', {'invoice': invoice})
 
 
 def new_rental(request):
@@ -45,3 +55,31 @@ def new_rental(request):
     else:
         form = RentalForm()
         return render(request, 'rentals/add_rental.html', {'form': form})
+
+
+def new_invoice(request):
+    if request.method == "POST":
+        form = InvoiceForm(request.POST)
+        if form.is_valid():
+            invoice = form.save(commit=False)
+            invoice.save()
+            return redirect('rentals:invoice_details', pk=invoice.pk)  # rentals:specify applicatiionlevel
+        else:
+            return render(request, 'rentals/add_invoice.html', {'form': form})
+    else:
+        form = InvoiceForm()
+        return render(request, 'rentals/add_invoice.html', {'form': form})
+
+
+def new_vendor(request):
+    if request.method == "POST":
+        form = VendorForm(request.POST)
+        if form.is_valid():
+            vendor = form.save(commit=False)
+            vendor.save()
+            return redirect('rentals:vendor_details', pk=vendor.pk)  # rentals:specify applicatiionlevel
+        else:
+            return render(request, 'rentals/add_vendor.html', {'form': form})
+    else:
+        form = VendorForm()
+        return render(request, 'rentals/add_vendor.html', {'form': form})

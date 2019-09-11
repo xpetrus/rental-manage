@@ -9,7 +9,7 @@ urlpatterns = [
     path('vendor/', views.vendor_detail_view, name='vendor'),
     path('invoice/', views.invoice_detail_view, name='invoice'),
     url(r'^rental/new/$', views.new_rental, name='new_rental'),
-    # url(r'^rental/new/$', views.new_rental, name='new_rental'),
-    # url(r'^rental/new/$', views.new_rental, name='new_rental'),
+    url(r'^vendor/new/$', views.new_vendor, name='new_vendor'),
+    url(r'^invoice/new/$', views.new_invoice, name='new_invoice'),
 
     ]

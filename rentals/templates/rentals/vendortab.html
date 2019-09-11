@@ -35,10 +35,11 @@
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
             <h1>Vendors:</h1>
-            {% for rental in rentals %}
-            <p>Job ID: {{rental.Job_ID}}</p>
-            <p>Equipment needed from: {{rental.Equipment_Needed_from}}</p>
-            <p>Equipment needed until: {{rental.Equipment_Needed_Until}}</p>
+            {% for vendor in vendors %}
+            <p>Vendor ID: {{vendor.Vendor_ID}}</p>
+            <p>Salesperson: {{vendor.Sales_Person}}</p>
+            <p>Address: {{vendor.Address}}</p>
+            <p>Contact: {{vendor.Contact}}</p>
             {% endfor %}
             <p>ok</p>
         </div>

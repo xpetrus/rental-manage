@@ -28,8 +28,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                       <a class="dropdown-item" href="{% url 'rentals:new_rental' %}">Add Rental</a>
-                      <a class="dropdown-item" href="#">Add Vendor</a>
-                      <a class="dropdown-item" href="#">Add Invoice</a>
+                      <a class="dropdown-item" href="{% url 'rentals:new_vendor' %}">Add Vendor</a>
+                      <a class="dropdown-item" href="{% url 'rentals:new_invoice' %}">Add Invoice</a>
                     </div>
                 </li>
             </ul>
