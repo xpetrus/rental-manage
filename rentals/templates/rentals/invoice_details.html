@@ -22,12 +22,20 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'rentals:invoice' %}">Invoices</a>
               </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown">
+                      Add Records
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="{% url 'rentals:new_rental' %}">Add Rental</a>
+                      <a class="dropdown-item" href="{% url 'rentals:new_vendor' %}">Add Vendor</a>
+                      <a class="dropdown-item" href="{% url 'rentals:new_invoice' %}">Add Invoice</a>
+                    </div>
+                </li>
             </ul>
           </div>
     </nav>
         <div class = "card-body formbod">
-            Hi {{ user.username }} !!
-            <p><a href="{% url 'logout' %}">Log Out</a> </p>
             <p class = "card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate

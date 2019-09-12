@@ -83,3 +83,15 @@ def new_vendor(request):
     else:
         form = VendorForm()
         return render(request, 'rentals/add_vendor.html', {'form': form})
+
+
+def filter_vendor(request):
+    query = request.GET.get('salesperson')
+    if query:
+        results = Vendor.objects.filter(Sales_Person=query)
+        context = {
+            'vendors': results
+        }
+        return render(request, 'rentals/vendortab.html', context)
+
+
