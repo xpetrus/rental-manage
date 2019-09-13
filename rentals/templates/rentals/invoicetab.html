@@ -44,12 +44,32 @@
             </p>
             <h1>Invoices:</h1>
             {% for invoice in invoices %}
-            <p>Job Number: {{invoice.Job_No}}</p>
-            <p>Invoice Number: {{invoice.Invoice_No}}</p>
-            <p>Invoice Date: {{invoice.Invoice_Date}}</p>
-            <p>Invoice Amount: {{invoice.Invoice_Amount}}</p>
+            <div class = "card listcard">
+                <div class = "row">
+                    <div class = 'col-md-10'>
+                        <div class = 'container listcont'>
+                            <p class = 'listthing'>Job Number: {{invoice.Job_No}}</p>
+                            <p class = 'listthing'>Invoice Number: {{invoice.Invoice_No}}</p>
+                            <p class = 'listthing'>Invoice Date: {{invoice.Invoice_Date}}</p>
+                            <p class = 'listthing'>Invoice Amount: {{invoice.Invoice_Amount}}</p>
+                        </div>
+                    </div>
+                    <div class = 'col-md-2'>
+                        <div class = "container">
+                            <form class = 'flex-container' method = "post" >
+                                {% csrf_token %}
+                                <div class = "input-group">
+                                    <input type = "hidden" name = "pk" value ="1">
+                                    <button name = "delete" type = "submit" class = 'btn btn-danger pushdown'>Delete</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
-            <p>ok</p>
         </div>
 
     </div>

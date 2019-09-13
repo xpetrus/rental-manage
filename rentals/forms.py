@@ -25,9 +25,15 @@ class VendorForm(forms.ModelForm):
     class Meta:
         model = Vendor
         fields = ('Vendor_ID', 'Sales_Person', 'Address', 'Contact')
+        widgets = {
+            'Contact': forms.TextInput(attrs={'placeholder': 'Phone or Email'}),
+        }
 
 
 class InvoiceForm(forms.ModelForm):
     class Meta:
         model = Invoice
         fields = ('Job_No', 'Invoice_Date', 'Invoice_No', 'Invoice_Amount')
+        widgets = {
+            'Invoice_Date':forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD'}),
+        }

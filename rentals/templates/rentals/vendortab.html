@@ -55,7 +55,7 @@
                 <div class = "row">
                     <div class = 'col-md-10'>
                         <div class = 'container listcont'>
-                            <p class = 'listthing'>Vendor ID: {{vendor.Vendor_ID}}</p>
+                            <p class = 'listthing'>Vendor ID: {{vendor.pk}}</p>
                             <p class = 'listthing'>Salesperson: {{vendor.Sales_Person}}</p>
                             <p class = 'listthing'>Address: {{vendor.Address}}</p>
                             <p class = 'listthing'>Contact: {{vendor.Contact}}</p>
@@ -63,7 +63,7 @@
                     </div>
                     <div class = 'col-md-2'>
                         <div class = "container">
-                            <form class = 'flex-container' method = "post">
+                            <form class = 'flex-container' method = "post" action = "{% url 'rentals:del_vendor' vendor.id %}">
                                 {% csrf_token %}
                                 <div class = "input-group">
                                     <input type = "hidden" name = "pk" value ="{{vendor.pk}}">

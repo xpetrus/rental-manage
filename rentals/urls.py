@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^vendor/new/$', views.new_vendor, name='new_vendor'),
     url(r'^invoice/new/$', views.new_invoice, name='new_invoice'),
     url(r'^vendor/filter_vendor/$', views.filter_vendor, name='filter_vendor'),
+    url(r'^delete/(?P<pk>[0-9]+)/$', views.del_vendor, name='del_vendor'),
 
     ]

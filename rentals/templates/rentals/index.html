@@ -44,11 +44,32 @@
             </p>
             <h1>Rentals:</h1>
             {% for rental in rentals %}
-            <p>Job ID: {{rental.Job_ID}}</p>
-            <p>Equipment needed from: {{rental.Equipment_Needed_from}}</p>
-            <p>Equipment needed until: {{rental.Equipment_Needed_Until}}</p>
+            <div class = "card listcard">
+                <div class = "row">
+                    <div class = 'col-md-10'>
+                        <div class = 'container listcont'>
+                            <p class = 'listthing'>Job ID: {{rental.pk}}</p>
+                            <p class = 'listthing'>Equipment needed from: {{rental.Equipment_Needed_from}}</p>
+                            <p class = 'listthing'>Equipment needed until: {{rental.Equipment_Needed_Until}}</p>
+                            <p class = 'listthing'>PO Number: {{rental.PO_Num}}</p>
+                        </div>
+                    </div>
+                    <div class = 'col-md-2'>
+                        <div class = "container">
+                            <form class = 'flex-container' method = "post">
+                                {% csrf_token %}
+                                <div class = "input-group">
+                                    <input type = "hidden" name = "pk">
+                                    <button name = "delete" type = "submit" class = 'btn btn-danger pushdown'>Delete</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
-            <p>ok</p>
         </div>
 
     </div>
@@ -59,7 +80,7 @@
     <h6 class = "display-4 jumtext">Mosites Rental Management</h6>
     <div class = "buttons d-flex justify-content-center">
         <a class = "btn btn-info btn-lg loginbut" href="{% url 'login' %}">Login</a>
-        <a class = "btn btn-warning btn-lg loginbut" href="{% url 'login' %}">Create Account</a>
+        <a class = "btn btn-warning btn-lg loginbut" href="{% url 'accounts:signup' %}">Create Account</a>
     </div>
 
      <!--what is this syntx-->

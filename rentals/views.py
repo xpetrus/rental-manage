@@ -77,7 +77,7 @@ def new_vendor(request):
         if form.is_valid():
             vendor = form.save(commit=False)
             vendor.save()
-            return redirect('rentals:vendor_details', pk=vendor.pk)  # rentals:specify applicatiionlevel
+            return redirect('/rentals/vendor')  # rentals:specify applicatiionlevel
         else:
             return render(request, 'rentals/add_vendor.html', {'form': form})
     else:
@@ -95,3 +95,9 @@ def filter_vendor(request):
         return render(request, 'rentals/vendortab.html', context)
 
 
+def del_vendor(request, pk):
+    vendor = get_object_or_404(Vendor, pk=pk)
+    if request.method == 'POST':
+        vendor.delete()
+        return redirect('/rentals/vendor')
+    return render(request, 'vendortab.html', {'vendors': vendor})
