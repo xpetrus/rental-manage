@@ -26,7 +26,7 @@ class VendorForm(forms.ModelForm):
         model = Vendor
         fields = ('Vendor_ID', 'Sales_Person', 'Address', 'Contact')
         widgets = {
-            'Contact': forms.TextInput(attrs={'placeholder': 'Phone or Email'}),
+            'Contact': forms.TextInput(attrs={'placeholder': 'Phone'}),
         }
 
 

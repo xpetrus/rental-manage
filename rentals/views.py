@@ -101,3 +101,16 @@ def del_vendor(request, pk):
         vendor.delete()
         return redirect('/rentals/vendor')
     return render(request, 'vendortab.html', {'vendors': vendor})
+
+
+def vendor_edit(request, pk):
+    vendor = get_object_or_404(Vendor, pk=pk)
+    if request.method == "POST":
+        form = VendorForm(request.POST, instance=vendor)
+        if form.is_valid():
+            vendor = form.save(commit=False)
+            vendor.save()
+            return redirect('/rentals/vendor')
+    else:
+        form = VendorForm(instance=vendor)
+    return render(request, 'rentals/add_vendor.html', {'form': form})
